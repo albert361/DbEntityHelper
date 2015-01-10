@@ -1,0 +1,11 @@
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\NDde.dll
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\WinformTester.exe
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\WinformTester.pdb
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\SMBCTPE.dll
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\SMBCTPE.pdb
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\bin\Debug\SMBCTPE.xml
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\obj\Debug\WinformTester.csprojResolveAssemblyReference.cache
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\obj\Debug\WinformTester.Properties.Resources.resources
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\obj\Debug\WinformTester.csproj.GenerateResource.Cache
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\obj\Debug\WinformTester.exe
+D:\Home\Documents\GitHub\DbEntityHelper\WinformTester\obj\Debug\WinformTester.pdb

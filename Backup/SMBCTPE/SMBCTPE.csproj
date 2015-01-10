@@ -1,0 +1,133 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1EC577DC-20C4-49B2-A4EA-5DB996D9746E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMBCTPE</RootNamespace>
+    <AssemblyName>SMBCTPE</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SMBCTPE.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\SMBCTPE.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NDde, Version=2.1.563.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\DBAccess.cs" />
+    <Compile Include="DataAccess\FileAccess.cs" />
+    <Compile Include="EntityModel\DataRowWithTag.cs" />
+    <Compile Include="EntityModel\DataTableWithRowsTag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EntityModel\Entities.cs" />
+    <Compile Include="EntityModel\Entity.cs" />
+    <Compile Include="Global\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Global\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Global\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global\DDE.cs" />
+    <Compile Include="Global\IBaseView.cs" />
+    <Compile Include="Global\LoginInfo.cs" />
+    <Compile Include="Helper\ToolStripHelper.cs" />
+    <Compile Include="Helper\DateTimeHelper.cs" />
+    <Compile Include="Helper\DBHelper.cs" />
+    <Compile Include="Helper\DialogHelper.cs" />
+    <Compile Include="Helper\ValidationHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NDde.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="SMBCTPE.Helper.cd" />
+    <None Include="SMBCTPE.Global.cd" />
+    <None Include="SMBCTPE.EntityModel.cd" />
+    <None Include="SMBCTPE.DataAccess.cd" />
+    <None Include="Resources\external_link.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\link.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\empty_trash.png" />
+    <None Include="Resources\message.png" />
+    <None Include="Resources\forward.png" />
+    <None Include="Resources\erase.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\cllipboard.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\add_file.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Global\About.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Global\BaseForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

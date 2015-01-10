@@ -1,0 +1,1155 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SMBCTPE</name>
+    </assembly>
+    <members>
+        <member name="T:SMBCTPE.DataAccess.DbAccess">
+            <summary>
+            Database Access object
+            
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.GetConnection">
+            <summary>
+            Get Database connection, the provider will be choosen automatically by the LoginInfo
+            <para>
+            The username, password, and datasource will be filled with the eSS DDE value, i.e., LoginInfo
+            </para>
+            </summary>
+            <returns>Connection object</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.GetConnection(System.Boolean)">
+            <summary>
+            Get Database connection, the provider will be choosen automatically by the LoginInfo unless you force
+            to use ODBC provider
+            <para>
+            The username, password, and datasource will be filled with the eSS DDE value, i.e., LoginInfo
+            </para>
+            </summary>
+            <param name="forceODBC">
+            <para>false: automatically</para>
+            <para>true: use ODBC provider</para>
+            </param>
+            <returns>Connection object</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.GetConnectionAS400">
+            <summary>
+            Get AS400 Database connection, the provider is fixed to use ODBC only
+            <para>
+            The username, password, and datasource will be filled with the eSS DDE value, i.e., LoginInfo
+            </para>
+            </summary>
+            <returns>Connection object</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteScalar(System.String)">
+            <summary>
+            Executes query, and returns the first column of the first row in the result set returned by the query. Additional columns or rows are ignored.
+            </summary>
+            <param name="sqlString">query string</param>
+            <returns>
+            <para>object: the first column data</para>
+            <para>null: no data queried</para>
+            </returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteNonQuery(System.String)">
+            <summary>
+            Executes a non-query sql command.
+            <para>If the command is failed, it will use the transaction to rollback to last state.</para>
+            </summary>
+            <param name="sqlString">sql string</param>
+            <returns>The affected rows by this command</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteQuery(System.String)">
+            <summary>
+            Executes query, and returns the Table object
+            </summary>
+            <param name="sqlString">query string</param>
+            <returns>table: the table object. 
+            <para>Note that the object is returned with empty rows even no records exsist.</para>
+            </returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteQuery``1(System.String)">
+            <summary>
+            Executes query, and returns the Entities model
+            </summary>
+            <typeparam name="T">type of the element in entities model</typeparam>
+            <param name="sqlString">query string</param>
+            <returns>Entities model</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteQuery``1(System.String,System.Int32)">
+            <summary>
+            Executes query, and returns the Entities model with a limit number by maxRowCount
+            </summary>
+            <typeparam name="T">type of the element in entities model</typeparam>
+            <param name="sqlString">query string</param>
+            <param name="maxRowCount">the limit number</param>
+            <returns>Entities model</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteSPNonQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Execute a stored procedure and return the affected row counts
+            </summary>
+            <param name="storedProcedureName">Stored procedure name</param>
+            <param name="parameters">Stored procedure parameters</param>
+            <returns>The affected row counts</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteSPScalar(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Execute a stored procedure and return the first column data in first row
+            </summary>
+            <param name="storedProcedureName">Stored procedure name</param>
+            <param name="parameters">Stored procedure parameters</param>
+            <returns>the data in table[0][0]</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.DbAccess.ExecuteSPQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Execute a stored procedure and return a data table
+            </summary>
+            <param name="storedProcedureName">Stored procedure name</param>
+            <param name="parameters">Stored procedure parameters</param>
+            <returns>the table object</returns>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.DbAccess.CurrentDbAccessProvider">
+            <summary>
+            Return the current database access provider
+            <para>The type is defined in SMBCTPE.DataAccess.DbAccessProvider</para>
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.DbAccess.Instance">
+            <summary>
+            Get the DbAccess unique instance
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.DbAccessProvider">
+            <summary>
+            Enum providers for database access
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.DbAccessProvider.ODBC">
+            <summary>
+            ODBC - use System.Data.Odbc
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.DbAccessProvider.SqlClient">
+            <summary>
+            SqlClient - use System.Data.SqlClient
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.DataSources">
+            <summary>
+            Datasources (Server name)
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.DataSources.OU">
+            <summary>
+            ou, Test server
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.DataSources.TWTADB1">
+            <summary>
+            TWTADB1, Official TPE branch server
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.TableCell">
+            <summary>
+            Table cell class, key is the cell name (field name), and value is its data in any types
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.TableCell.Key">
+            <summary>
+            Cell name, i.e. the SQL data field
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.DataAccess.TableCell.Value">
+            <summary>
+            the field value
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.TableCell.#ctor(System.String,System.Object)">
+            <summary>
+            Constructor of a table cell
+            </summary>
+            <param name="k">Key</param>
+            <param name="v">Value</param>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.TableRow">
+            <summary>
+            Table row class, it consists of several table cell objects
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.TableRow.AddCell(SMBCTPE.DataAccess.TableCell)">
+            <summary>
+            Add cell item
+            </summary>
+            <param name="cell">Table cell item</param>
+            <returns>true if success</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.TableRow.GetEnumerator">
+            <summary>
+            Get each TableCell from this row
+            </summary>
+            <returns>the TableCell enumerator</returns>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.TableRow.ColumnCount">
+            <summary>
+            Get the column count
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.TableRow.Item(System.Int32)">
+            <summary>
+            Get the table cell of index i
+            </summary>
+            <param name="i">cell index, 0 to n-1</param>
+            <returns>table cell object</returns>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.TableRow.Item(System.String)">
+            <summary>
+            Get the table cell with field name is equal to k
+            </summary>
+            <param name="k">cell name (field name)</param>
+            <returns>table cell object</returns>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.Table">
+            <summary>
+            Table class, it consists of several table row objects
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.Table.NewTableRow">
+            <summary>
+            Create a new row by the schema of this table
+            <para>
+            Note that the new row will be added into table instantly once the function is called.
+            </para>
+            </summary>
+            <returns>the reference to the new row object
+            <para>
+            if the column headers weren't defined yet, the return value is null.
+            </para>
+            </returns>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.Table.Item(System.Int32)">
+            <summary>
+            Get the table row object of index i
+            </summary>
+            <param name="i">the row index</param>
+            <returns>the table row object</returns>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.Table.ColumnsHeader">
+            <summary>
+            Get a list of TableCell with the column names and types
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.Table.ColumnCount">
+            <summary>
+            Get the column count
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.DataAccess.Table.RowCount">
+            <summary>
+            Get the row count
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.DataAccess.FileAccess">
+            <summary>
+            File Access class with several static functions for opening and saving files
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.FileAccess.CreateFile(System.String)">
+            <summary>
+            Create a file and return its stream, then you can user BinaryReader/BinaryWriter for read/write.
+            </summary>
+            <param name="filename">filename with path</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:SMBCTPE.DataAccess.FileAccess.OpenFile(System.String)">
+            <summary>
+            Open a file and return its stream, then you can user BinaryReader/BinaryWriter for read/write.
+            </summary>
+            <param name="filename">filename with path</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="T:SMBCTPE.EntityModel.DataRowWithTag">
+            <summary>
+            A custom datarow with a Tag object
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.EntityModel.DataRowWithTag.Tag">
+            <summary>
+            A Tag attached with this row
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.DataRowWithTag.#ctor(System.Data.DataRowBuilder)">
+            <summary>
+            constructor
+            </summary>
+            <param name="rb"></param>
+        </member>
+        <member name="T:SMBCTPE.EntityModel.DataTableWithRowsTag">
+            <summary>
+            A custom datatable with DataRowWithTag rows
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.DataTableWithRowsTag.NewRowFromBuilder(System.Data.DataRowBuilder)">
+            <summary>
+            override the NewRow() function
+            </summary>
+            <param name="builder">the datarow builder</param>
+            <returns>DataRowWithTag object as DataRow</returns>
+        </member>
+        <member name="T:SMBCTPE.EntityModel.Entities`1">
+            <summary>
+            Entities model for storing data entities
+            </summary>
+            <typeparam name="T">Entity Type</typeparam>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.#ctor">
+            <summary>
+            Constructor of new empty entities object
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.GetEntityToDataTableSchema(System.Type)">
+            <summary>
+            Gets the entity to data table schema.
+            </summary>
+            <param name="entityType">Type of the entity.</param>
+            <returns>The DataTable object</returns>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.EntitiesToDataTable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Convert entities to datatable
+            </summary>
+            <typeparam name="t">Entity type</typeparam>
+            <param name="entities">entities</param>
+            <returns>The DataTable object</returns>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.AddIndex(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            For sorting function
+            </summary>
+            <param name="property">sort property</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.AddNew">
+            <summary>
+            New a object T and add into entities
+            </summary>
+            <returns>the object T</returns>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.ApplySort(System.ComponentModel.PropertyDescriptor,System.ComponentModel.ListSortDirection)">
+            <summary>
+            ApplySort
+            </summary>
+            <param name="property">sort property</param>
+            <param name="direction">direction</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.ClearItems">
+            <summary>
+            Clear all items
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.Find(System.ComponentModel.PropertyDescriptor,System.Object)">
+            <summary>
+            Find index for an item which has the key equals the given property
+            </summary>
+            <param name="property">property</param>
+            <param name="key">value</param>
+            <returns>item index</returns>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.InsertItem(System.Int32,`0)">
+            <summary>
+            Insert item T to index
+            </summary>
+            <param name="index">where to insert</param>
+            <param name="item">item T</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.CancelNew(System.Int32)">
+            <summary>
+            Canel the lastest object
+            </summary>
+            <param name="itemIndex">item index</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.EndNew(System.Int32)">
+            <summary>
+            EndNew
+            </summary>
+            <param name="itemIndex">The end item</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.OnListChanged(System.ComponentModel.ListChangedEventArgs)">
+            <summary>
+            OnListChanged event listener
+            </summary>
+            <param name="ev">argument</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.RemoveIndex(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            clear the sorproperty
+            </summary>
+            <param name="property"></param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.RemoveItem(System.Int32)">
+            <summary>
+            Remove item of index
+            </summary>
+            <param name="index">where to remove</param>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.RemoveSort">
+            <summary>
+            remove the sorting result
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entities`1.SetItem(System.Int32,`0)">
+            <summary>
+            Set an item T to index
+            </summary>
+            <param name="index">where to set</param>
+            <param name="item">what to set</param>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.Item(System.Int32)">
+            <summary>
+            The indexer of entities
+            </summary>
+            <param name="idx">index</param>
+            <returns>the object T</returns>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.AllowEdit">
+            <summary>
+            AllowEdit
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.AllowNew">
+            <summary>
+            AllowNew
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.AllowRemove">
+            <summary>
+            AllowRemove
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.IsSorted">
+            <summary>
+            IsSorted
+            </summary>
+        </member>
+        <member name="E:SMBCTPE.EntityModel.Entities`1.ListChanged">
+            <summary>
+            ListChanged event
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.SortDirection">
+            <summary>
+            SortDirection
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.SortProperty">
+            <summary>
+            SortProperty
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.SupportsChangeNotification">
+            <summary>
+            SupportsChangeNotification
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.SupportsSearching">
+            <summary>
+            SupportsSearching
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.EntityModel.Entities`1.SupportsSorting">
+            <summary>
+            SupportsSorting
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.EntityModel.Entity">
+            <summary>
+            The base type of all entities
+            <para>
+            Note that all entity class should inherit this class
+            </para>
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entity.GetSqlFieldsAndValuesPair">
+            <summary>
+            Get the Property Names and Values in pair
+            </summary>
+            <returns>An enuerator for the pair</returns>
+        </member>
+        <member name="M:SMBCTPE.EntityModel.Entity.OnPropertyChanged(System.Object)">
+            <summary>
+            PropertyChangedEvent
+            </summary>
+            <param name="propertyName">Property name</param>
+        </member>
+        <member name="E:SMBCTPE.EntityModel.Entity.PropertyChanged">
+            <summary>
+            PropertyChangedEvent
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Global.About.components">
+            <summary>
+            設計工具所需的變數。
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.About.Dispose(System.Boolean)">
+            <summary>
+            清除任何使用中的資源。
+            </summary>
+            <param name="disposing">如果應該公開 Managed 資源則為 true，否則為 false。</param>
+        </member>
+        <member name="M:SMBCTPE.Global.About.InitializeComponent">
+             <summary>
+             此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改這個方法的內容。
+            
+             </summary>
+        </member>
+        <member name="T:SMBCTPE.Global.BaseForm">
+            <summary>
+            Base Form class for all eSS App
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.Navigate(SMBCTPE.Global.IBaseView)">
+            <summary>
+            Navigate panel to the input view
+            </summary>
+            <param name="view">The input view (UserControl with IBaseView)</param>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.tlsTop_ItemClicked(System.Object,System.Windows.Forms.ToolStripItemClickedEventArgs)">
+            <summary>
+            The top tool strip item clicked event
+            </summary>
+            <param name="sender">the top tool strip item</param>
+            <param name="e">click event argument</param>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <summary>
+            Process the command keys
+            </summary>
+            <param name="msg">Win32 message</param>
+            <param name="keyData">The pressed key</param>
+            <returns>True if processed</returns>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.pnlViewer_ControlAdded(System.Object,System.Windows.Forms.ControlEventArgs)">
+            <summary>
+            This event is fired when any controls added into pnlViewer
+            </summary>
+            <param name="sender">pnlViewer</param>
+            <param name="e">control event arguments</param>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.pnlViewer_ControlRemoved(System.Object,System.Windows.Forms.ControlEventArgs)">
+            <summary>
+            This event is fired when any controls removed into pnlViewer
+            </summary>
+            <param name="sender">pnlViewer</param>
+            <param name="e">control event arguments</param>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.drpbtnSettings_DropDownItemClicked(System.Object,System.Windows.Forms.ToolStripItemClickedEventArgs)">
+            <summary>
+            The bottom dripdown menu item clicked event
+            </summary>
+            <param name="sender">the menu item</param>
+            <param name="e">click event argument</param>
+        </member>
+        <member name="F:SMBCTPE.Global.BaseForm.components">
+            <summary>
+            設計工具所需的變數。
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.Dispose(System.Boolean)">
+            <summary>
+            清除任何使用中的資源。
+            </summary>
+            <param name="disposing">如果應該公開 Managed 資源則為 true，否則為 false。</param>
+        </member>
+        <member name="M:SMBCTPE.Global.BaseForm.InitializeComponent">
+             <summary>
+             此為設計工具支援所需的方法 - 請勿使用程式碼編輯器修改這個方法的內容。
+            
+             </summary>
+        </member>
+        <member name="F:SMBCTPE.Global.BaseForm.tlsTop">
+            <summary>
+            The top tool strip
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Global.BaseForm.stsBottom">
+            <summary>
+            The bottom status strip
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.BaseForm.Permission">
+            <summary>
+            The permission string gotten from eSS
+            <para>INS,UPD,DEL,QRY,PRT,APPROVE</para>
+            <para>Add,Mod,Del,Inq,Prt,Approve</para>
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.BaseForm.FunctionId">
+            <summary>
+            The eSS function ID
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.BaseForm.CurrentView">
+            <summary>
+            Return the current view
+            </summary>
+        </member>
+        <member name="E:SMBCTPE.Global.BaseForm.Load">
+            <summary>
+            The Form Load event
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.DDE.GetUserInfo">
+            <summary>
+            Get login user information in DDE
+            <para>These information will be stored into SMBCTEP.Global.LoginInfo</para>
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.Global.IBaseView">
+            <summary>
+            The BaseView interface
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.IBaseView.ToolStripItemClicked(System.String)">
+            <summary>
+            Handle the tool strip item click event from BaseForm
+            </summary>
+            <param name="itemName">the clicked name</param>
+        </member>
+        <member name="T:SMBCTPE.Global.LoginInfo">
+            <summary>
+            A singleton object stores user login info.
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Global.LoginInfo.GetLoginInfoAndPermissions(System.String,System.String@)">
+            <summary>
+            Get permission string, ex:YNYYNYN
+            </summary>
+            <param name="functionId">Function ID</param>
+            <param name="permission">permission string</param>        
+            <returns>bool</returns>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.Instance">
+            <summary>
+            Get the LoginInfo unique instance
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.DSN">
+            <summary>
+            Database server name
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.UID">
+            <summary>
+            User ID
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.AUTH">
+            <summary>
+            Auth
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.HENV">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.HDBC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.OK">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.Group">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.DPT">
+            <summary>
+            Department
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.Visible">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.ULevel">
+            <summary>
+            User level
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Global.LoginInfo.SeSSName">
+            <summary>
+            Project name
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.Helper.ToolStripHelper">
+            <summary>
+            A helper class with several static functions for creating windows forms tool strip item
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.ToolStripHelper.CreateItem(SMBCTPE.Helper.ToolStripHelper.Template)">
+            <summary>
+            Create a tool strip item by the template enum
+            </summary>
+            <param name="template">the template enum</param>
+            <returns>a tool strip item object</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ToolStripHelper.ApplyFilter(System.Collections.Generic.List{SMBCTPE.Helper.ToolStripHelper.Template},System.Action{System.Object},System.String)">
+            <summary>
+            Apply permission filter on a toolstripitem list and doing the action
+            </summary>
+            <param name="list">the list of templates</param>
+            <param name="action">the action to do with each item object</param>
+            <param name="filter">the permission filter string
+            <para>
+            <seealso cref="P:SMBCTPE.Global.BaseForm.Permission"/>
+            </para>
+            </param>
+        </member>
+        <member name="M:SMBCTPE.Helper.ToolStripHelper.ApplyFilter(System.Collections.Generic.List{SMBCTPE.Helper.ToolStripHelper.Template},System.String)">
+            <summary>
+            Apply permission filter on a toolstripitem list
+            </summary>
+            <param name="list">the list of templates</param>
+            <param name="filter">the permission filter string
+            <para>
+            <seealso cref="P:SMBCTPE.Global.BaseForm.Permission"/>
+            </para>
+            </param>
+        </member>
+        <member name="T:SMBCTPE.Helper.ToolStripHelper.Template">
+            <summary>
+            ToolStripItem templates
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.New">
+            <summary>
+            New button, tlsbtnNew
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Modify">
+            <summary>
+            Modify button, tlsbtnModify
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Delete">
+            <summary>
+            Delete button, tlsbtnDelete
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Inquire">
+            <summary>
+            Inquire button, tlsbtnInquire
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Print">
+            <summary>
+            Print button, tlsbtnPrint
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Approve">
+            <summary>
+            Approve button, tlsbtnApprove
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Reject">
+            <summary>
+            Reject button, tlsbtnReject
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Send">
+            <summary>
+            Send button, tlsbtnSend
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Clear">
+            <summary>
+            Clear button, tlsbtnClear
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Exit">
+            <summary>
+            Exit button, tlsbtnExit
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Separator">
+            <summary>
+            Separator
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Export">
+            <summary>
+            Export, tlsbtnExport
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Download">
+            <summary>
+            Download, tlsbtnDownload
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Link">
+            <summary>
+            Link, tlsbtnLink
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Copy">
+            <summary>
+            Copy, tlsbtnCopy
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Settings">
+            <summary>
+            Settings, tlsbtnSettings
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.ToolStripHelper.Template.Calendar">
+            <summary>
+            Calendar, tlsbtnCalendar
+            </summary>
+        </member>
+        <member name="T:SMBCTPE.Helper.DateTimeHelper">
+            <summary>
+            A helper class with several static functions for converting and validating datetime
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.DateTimeHelper.ToMingGuoDate(System.String)">
+            <summary>
+            Convert to MingGuo Date string in yyyMMdd or yyyMMddHHmmss format
+            </summary>
+            <param name="inDate">A.D. date string in yyyyMMdd or yyyyMMddHHmmss format</param>
+            <returns>yyyMMdd string</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DateTimeHelper.ToMingGuoDate(System.DateTime,System.Boolean)">
+            <summary>
+            Convert to MingGuo Date string in yyyMMdd or yyyMMddHHmmss format
+            </summary>
+            <param name="inDate">date time object</param>
+            <param name="withTime">with/without the time string</param>
+            <returns>yyyMMdd or yyyMMddHHmmss string</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DateTimeHelper.ToDateString(System.DateTime,System.Boolean)">
+            <summary>
+            Convert to A.D. date string in yyyyMMdd or yyyyMMddHHmmss format
+            </summary>
+            <param name="inDate">date time object</param>
+            <param name="withTime">with/without the time string</param>
+            <returns>yyyyMMdd or yyyyMMddHHmmss string</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DateTimeHelper.ParseDateTimeString(System.String)">
+            <summary>
+            Parse an A.D. or MingGuo date string to DateTime object
+            <para>A.D. yyyyMMdd</para>
+            <para>A.D. yyyyMMddHHmmss</para>
+            <para>MingGuo yyyMMdd</para>
+            <para>MingGuo yyyMMddHHmmss</para>
+            </summary>
+            <param name="inDate">the A.D. or MingGuo date string</param>
+            <returns>date time object</returns>
+        </member>
+        <member name="T:SMBCTPE.Helper.DBHelper">
+            <summary>
+            A helper class with several static functions for processing datareader, datatable, and entities
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.GetServerDateTime">
+            <summary>
+            Get the sql server date time
+            </summary>
+            <returns>the DateTime object</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.GetSerialNumber(System.String,System.String)">
+            <summary>
+            Get the Serial Number of the specified system and date
+            </summary>
+            <param name="App_Name">system name</param>
+            <param name="obj_Date">date string in format yyyyMMdd</param>
+            <returns>the date string with serial number in foramt yyyyMMdd######</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.GetWorkFlow(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            因應有程式需要常有跨部門工作職權的調整　因此使用此功能來協助　工作流程的 動態調整
+            </summary>
+            <param name="PGName">程式名稱</param>
+            <param name="TypeName">程式中的交易型別</param>
+            <param name="Status">交易型別中的 該交易所擁有的狀態，@strStatus與@strUGrpName 二選一</param>
+            <param name="UGrpName">對該交易的狀態 有處理權限的使用者群組，@strStatus與@strUGrpName 二選一</param>
+            <param name="UpDown">指定流程方向是往上或是往下走 U: Up往上走,  D: Down往下走. X:一次往下X層, 未指定時預設值為 U1</param>
+            <returns>Result Table object, Field01: ParameterIndex 交易狀態, Field02: ParameterItem  使用者群組</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.GetLogInsertString(System.String,System.String,System.String,System.String)">
+            <summary>
+            Get the insert sql string for inserting log to server
+            </summary>
+            <param name="tranNo">Transaction No</param>
+            <param name="apName">App name</param>
+            <param name="opType">Operation type</param>
+            <param name="remarks">Remark</param>
+            <returns>the insert sql string</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.Batch``1(System.String,SMBCTPE.Helper.DBHelper.BatchObject{``0},System.Action{SMBCTPE.Helper.DBHelper.BatchObject{``0}},System.Int32,System.Int32)">
+            <summary>
+            Create a batch to run action repeatly in a specified times
+            </summary>
+            <typeparam name="T">Entities Type, ex:Users</typeparam>
+            <param name="sqlQuery">The sql query string for creating data reader, ex:Select * from General..Users order by UserID</param>
+            <param name="bo">The BatchObject which conatains the entities</param>
+            <param name="action">An delegate Action for repeatly operation</param>
+            <param name="countsPerAction">The number of entities should be read from reader into entities per action</param>
+            <param name="timesAction">Times to run actions</param>
+        </member>
+        <member name="T:SMBCTPE.Helper.DBHelper.BatchObject`1">
+            <summary>
+            The class for DBHelper.Batch function
+            </summary>
+            <typeparam name="T">The type of entity for batch function</typeparam>
+        </member>
+        <member name="F:SMBCTPE.Helper.DBHelper.BatchObject`1.entities">
+            <summary>
+            The entities for batch operation
+            </summary>
+        </member>
+        <member name="F:SMBCTPE.Helper.DBHelper.BatchObject`1.tag">
+            <summary>
+            An object for batch operation
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.DBHelper.BatchObject`1.#ctor(SMBCTPE.EntityModel.Entities{`0},System.Object)">
+            <summary>
+            Constructor of new batchobject with entities and tag
+            </summary>
+            <param name="e">The entities for batch operation</param>
+            <param name="t">An object for batch operation</param>
+        </member>
+        <member name="T:SMBCTPE.Helper.DialogHelper">
+            <summary>
+            A helper class with several static functions for displaying dialogs
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.ShowMessageBox(System.String)">
+            <summary>
+            Show System.Windows.Forms.MessageBox with Message
+            </summary>
+            <param name="msg">Message</param>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.ExceptionDialog(System.Exception)">
+            <summary>
+            Show a dialog with exception message and stack trace.
+            </summary>
+            <param name="ex">Exception</param>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.ExceptionDialog(System.String,System.Exception)">
+            <summary>
+            Show a dialog with prefix, exception message, and stack trace.
+            </summary>
+            <param name="prefix">Prefix string</param>
+            <param name="ex">Exception</param>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.ExceptionDialogAndExitApp(System.Exception)">
+            <summary>
+            Show a dialog with exception message and stack trace. Then exit current AP
+            </summary>
+            <param name="ex">Exception</param>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.ExceptionDialogAndExitApp(System.String,System.Exception)">
+            <summary>
+            Show a dialog with prefix, exception message, and stack trace. Then exit current AP
+            </summary>
+            <param name="prefix">Prefix string</param>
+            <param name="ex">Exception</param>
+        </member>
+        <member name="M:SMBCTPE.Helper.DialogHelper.Inputbox(System.String,System.String,System.String)">
+            <summary>
+            Show an Input box for user input text
+            </summary>
+            <param name="prompt">Message</param>
+            <param name="title">Dialog title</param>
+            <param name="defaultValue">Default value in textbox</param>
+            <returns>The input string</returns>
+        </member>
+        <member name="T:SMBCTPE.Helper.ValidationHelper">
+            <summary>
+            A helper class with several static functions for validating value
+            </summary>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.IsNumeric(System.String)">
+            <summary>
+            Check if a string is a numeric
+            </summary>
+            <param name="inStr">input string</param>
+            <returns>true if it is a numeric</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.IsDate(System.String)">
+            <summary>
+            Check if a string is a date
+            </summary>
+            <param name="inStr">input string</param>
+            <returns>true if it is a date</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.IsAnnoDominiString(System.String)">
+            <summary>
+            Check the A.D. date string in yyyyMMdd format
+            </summary>
+            <param name="inDate">date string</param>
+            <returns>true if it's valid</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.IsMingGuoString(System.String)">
+            <summary>
+            Check the MingGuo date string in yyyMMdd format
+            </summary>
+            <param name="inDate">date string</param>
+            <returns>true if it's valid</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.IsTimeString(System.String)">
+            <summary>
+            Check the time string in HHmmss format
+            </summary>
+            <param name="inTime">time string</param>
+            <returns>true if it's valid</returns>
+        </member>
+        <member name="M:SMBCTPE.Helper.ValidationHelper.NotEmpty(System.String)">
+            <summary>
+            Verify a string is not empty
+            </summary>
+            <param name="inStr">The input string</param>
+            <returns>true if it's not empty</returns>
+        </member>
+        <member name="T:SMBCTPE.Properties.Resources">
+            <summary>
+              用於查詢當地語系化字串等的強型別資源類別。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.ResourceManager">
+            <summary>
+              傳回這個類別使用的快取的 ResourceManager 執行個體。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.Culture">
+            <summary>
+              覆寫目前執行緒的 CurrentUICulture 屬性，對象是所有
+              使用這個強型別資源類別的資源查閱。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoCalendar">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoCancel">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoClipboard">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoCopy">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoDownload">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoEdit">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoErase">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoError">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoExport">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoHelp">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoInfo">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoLink">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoLock">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoLogout">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoNew">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoOk">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoPrinter">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoSave">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoSend">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoSettings">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.icoTrash">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+        <member name="P:SMBCTPE.Properties.Resources.isoSearch">
+            <summary>
+              查詢型別 System.Drawing.Bitmap 的當地語系化資源。
+            </summary>
+        </member>
+    </members>
+</doc>

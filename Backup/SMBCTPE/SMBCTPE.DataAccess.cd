@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="微軟正黑體" Size="9" />
+  <Class Name="SMBCTPE.DataAccess.DbAccess">
+    <Position X="7.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>AIAAEAAEAIAAAAAAAAAEAEAAAABAAAABYAAAIBAAAAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMBCTPE.DataAccess.DataSources">
+    <Position X="7.75" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMBCTPE.DataAccess.TableCell">
+    <Position X="0.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMBCTPE.DataAccess.TableRow" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.25" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>AAAAAAAAQAAAABAACAAAgAACQAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SMBCTPE.DataAccess.Table" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>ACQAAAAAAAAAAABACAAAAAAAQAAgCAAAAAAAAAAEAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SMBCTPE.DataAccess.FileAccess">
+    <Position X="0.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\FileAccess.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="SMBCTPE.DataAccess.DbAccessProvider">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SMBCTPE.DataAccess.StoredProcedureExecutionType">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>DataAccess\DBAccess.cs</FileName>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

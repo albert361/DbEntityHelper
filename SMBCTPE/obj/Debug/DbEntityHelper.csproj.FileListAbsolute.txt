@@ -1,0 +1,11 @@
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\bin\Debug\NDde.dll
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\bin\Debug\SMBCTPE.XML
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\bin\Debug\SMBCTPE.dll
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\bin\Debug\SMBCTPE.pdb
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\DbEntityHelper.csprojResolveAssemblyReference.cache
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\SMBCTPE.Global.About.resources
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\SMBCTPE.Global.BaseForm.resources
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\SMBCTPE.Properties.Resources.resources
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\DbEntityHelper.csproj.GenerateResource.Cache
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\SMBCTPE.dll
+D:\Home\Documents\GitHub\DbEntityHelper\SMBCTPE\obj\Debug\SMBCTPE.pdb

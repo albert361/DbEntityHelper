@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="微軟正黑體" Size="9" />
+  <Class Name="SMBCTPE.Helper.DateTimeHelper">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Helper\DateTimeHelper.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMBCTPE.Helper.DBHelper">
+    <Position X="6" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <FileName>Helper\DBHelper.cs</FileName>
+      <HashCode>AQAAACAAAAAAAAAAAAAAAQAAIgiAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="SMBCTPE.Helper.DBHelper.BatchObject&lt;T&gt;">
+        <TypeIdentifier>
+          <NewMemberFileName>Helper\DBHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+  </Class>
+  <Class Name="SMBCTPE.Helper.DialogHelper">
+    <Position X="6" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>Helper\DialogHelper.cs</FileName>
+      <HashCode>AAAAAAEAAAAAAAACCAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SMBCTPE.Helper.ToolStripHelper">
+    <Position X="3.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Helper\ToolStripHelper.cs</FileName>
+      <HashCode>AABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Method Name="SetItemCore" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SMBCTPE.Helper.ToolStripHelper.Template">
+        <TypeIdentifier>
+          <NewMemberFileName>Helper\ToolStripHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="SMBCTPE.Helper.ValidationHelper">
+    <Position X="0.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Helper\ValidationHelper.cs</FileName>
+      <HashCode>AAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

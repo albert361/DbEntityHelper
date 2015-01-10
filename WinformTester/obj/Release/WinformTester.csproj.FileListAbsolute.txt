@@ -1,0 +1,11 @@
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\obj\Release\WinformTester.csprojResolveAssemblyReference.cache
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\obj\Release\WinformTester.Properties.Resources.resources
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\obj\Release\WinformTester.csproj.GenerateResource.Cache
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\NDde.dll
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\WinformTester.exe
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\WinformTester.pdb
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\SMBCTPE.dll
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\SMBCTPE.pdb
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\bin\Release\SMBCTPE.xml
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\obj\Release\WinformTester.exe
+Z:\B. Work\6_SMBC\SMBCTPE\WinformTester\obj\Release\WinformTester.pdb
